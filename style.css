@@ -512,8 +512,15 @@ p {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    /* Good for mobile */
+}
+
+.footer-sep {
+    display: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 .footer-bottom {
@@ -596,6 +603,11 @@ p {
         margin: 0 auto;
     }
 
+    .section-classroom .vertical-wrapper {
+        max-width: 100%;
+        /* Allow Aizawl image full width */
+    }
+
     .quote-card {
         position: relative;
         bottom: auto;
@@ -619,6 +631,19 @@ p {
 
     .btn-outline {
         margin-left: 0;
+    }
+
+    .footer-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .footer-sep {
+        display: block;
+        margin: 0.5rem 0;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .reverse-layout {
@@ -754,8 +779,10 @@ p {
 
 @media (max-width: 768px) {
     .aizawl-img.vertical-img {
-        aspect-ratio: auto;
-        height: auto;
-        object-fit: contain;
+        aspect-ratio: unset !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        max-height: none !important;
     }
 }
