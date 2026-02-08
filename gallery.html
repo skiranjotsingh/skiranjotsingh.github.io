@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gallery | TTC Website</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+                rel="stylesheet">
+</head>
+
+<body class="gallery-page">
+
+        <header class="gallery-header">
+                <div class="container">
+                        <h1>Moments from the Journey</h1>
+                        <a href="index.html" class="back-link">← Back to Home</a>
+                </div>
+        </header>
+
+        <main class="container">
+                <div class="gallery-grid-full">
+                        <!-- Items generated based on file list provided -->
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-1.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-2.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-3.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-4.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-5.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-6.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-7.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-8.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-9.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-10.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-11.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-12.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-13.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-14.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-15.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-16.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                        <div class="gallery-item"><img src="Photos/Main/Gallery/teacher-training-india-17.webp"
+                                        alt="Teacher Training Moment" loading="lazy"></div>
+                </div>
+        </main>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="lightbox">
+                <span class="lightbox-close">&times;</span>
+                <button class="lightbox-prev" id="prevBtn">&#10094;</button>
+                <button class="lightbox-next" id="nextBtn">&#10095;</button>
+                <img src="" alt="Full view" class="lightbox-img" id="lightbox-img">
+        </div>
+
+        <footer class="footer">
+                <div class="container">
+                        <p class="copyright">© 2025 Education Initiative. All Rights Reserved.</p>
+                </div>
+        </footer>
+
+        <script>
+                const galleryItems = document.querySelectorAll('.gallery-item img');
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const closeBtn = document.querySelector('.lightbox-close');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+
+                let currentIndex = 0;
+
+                function showImage(index) {
+                        if (index < 0) index = galleryItems.length - 1;
+                        if (index >= galleryItems.length) index = 0;
+
+                        currentIndex = index;
+                        lightboxImg.src = galleryItems[currentIndex].src;
+                }
+
+                galleryItems.forEach((item, index) => {
+                        item.style.cursor = 'pointer';
+                        item.addEventListener('click', () => {
+                                lightbox.classList.add('active');
+                                showImage(index);
+                        });
+                });
+
+                closeBtn.addEventListener('click', () => {
+                        lightbox.classList.remove('active');
+                });
+
+                lightbox.addEventListener('click', (e) => {
+                        if (e.target === lightbox) {
+                                lightbox.classList.remove('active');
+                        }
+                });
+
+                // Navigation
+                prevBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showImage(currentIndex - 1);
+                });
+
+                nextBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showImage(currentIndex + 1);
+                });
+
+                // Keyboard Navigation
+                document.addEventListener('keydown', (e) => {
+                        if (!lightbox.classList.contains('active')) return;
+                        if (e.key === 'Escape') lightbox.classList.remove('active');
+                        if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                        if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+                });
+        </script>
+
+</body>
+
+</html>
