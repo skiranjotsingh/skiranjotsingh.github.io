@@ -344,6 +344,10 @@ p {
     color: rgba(255, 255, 255, 0.8);
 }
 
+.mission-text h2 {
+    color: white;
+}
+
 .mission-list {
     list-style: none;
     margin-top: 2rem;
@@ -506,8 +510,10 @@ p {
 
 .footer-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
+    flex-wrap: wrap;
+    /* Good for mobile */
 }
 
 .footer-bottom {
@@ -515,18 +521,9 @@ p {
     padding-top: 2rem;
     font-size: 0.9rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* Center the copyright since gallery moved */
     align-items: center;
-}
-
-.footer-bottom p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.footer-link {
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: underline;
 }
 
 /* GALLERY PAGE */
@@ -755,11 +752,10 @@ p {
     font-weight: 700;
 }
 
-.footer-link {
-    font-size: 1.1rem;
-    /* Increased size */
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 2px;
+@media (max-width: 768px) {
+    .aizawl-img.vertical-img {
+        aspect-ratio: auto;
+        height: auto;
+        object-fit: contain;
+    }
 }
